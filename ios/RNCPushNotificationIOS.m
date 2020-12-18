@@ -12,6 +12,8 @@
 #import <React/RCTConvert.h>
 #import <React/RCTEventDispatcher.h>
 
+#import <Firebase/Firebase.h>
+
 NSString *const RCTRemoteNotificationReceived = @"RemoteNotificationReceived";
 
 static NSString *const kLocalNotificationReceived = @"LocalNotificationReceived";
@@ -78,17 +80,12 @@ RCT_EXPORT_MODULE()
 {
 }
 
-+ (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
++ (void)didRegisterForRemoteNotificationsWithDeviceToken
 {
-  NSMutableString *hexString = [NSMutableString string];
-  NSUInteger deviceTokenLength = deviceToken.length;
-  const unsigned char *bytes = deviceToken.bytes;
-  for (NSUInteger i = 0; i < deviceTokenLength; i++) {
-    [hexString appendFormat:@"%02x", bytes[i]];
-  }
+  NSString* fcmToken = [FIRMessaging messaging].FCMToken;
   [[NSNotificationCenter defaultCenter] postNotificationName:kRemoteNotificationsRegistered
                                                       object:self
-                                                    userInfo:@{@"deviceToken" : [hexString copy]}];
+                                                    userInfo:@{@"deviceToken" : fcmToken}];
 }
 
 + (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error

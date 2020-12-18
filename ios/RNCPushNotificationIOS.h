@@ -16,7 +16,7 @@ typedef void (^RNCRemoteNotificationCallback)(UIBackgroundFetchResult result);
 
 #if !TARGET_OS_TV
 + (void)didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings;
-+ (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
++ (void)didRegisterForRemoteNotificationsWithDeviceToken;
 + (void)didReceiveRemoteNotification:(NSDictionary *)notification;
 + (void)didReceiveRemoteNotification:(NSDictionary *)notification fetchCompletionHandler:(RNCRemoteNotificationCallback)completionHandler;
 + (void)didReceiveLocalNotification:(UILocalNotification *)notification;

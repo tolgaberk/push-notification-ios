@@ -88,15 +88,17 @@ At the top of the file:
 ```objective-c
 #import <UserNotifications/UserNotifications.h>
 #import <RNCPushNotificationIOS.h>
+//for Firebase
+@import Firebase;
 ```
 
 Then, add the following lines:
 
 ```objective-c
 // Required for the register event.
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken
 {
- [RNCPushNotificationIOS didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+ [RNCPushNotificationIOS didRegisterForRemoteNotificationsWithDeviceToken];
 }
 // Required for the notification event. You must call the completion handler after handling the remote notification.
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
@@ -124,6 +126,8 @@ And then in your AppDelegate implementation, add the following:
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   ...
+  //Init firebase
+  [FIRApp configure];
   // Define UNUserNotificationCenter
   UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
   center.delegate = self;
@@ -364,8 +368,8 @@ Removes the specified pending notifications from Notification Center
 
 **Parameters:**
 
-| Name        | Type  | Required | Description                        |
-| ----------- | ----- | -------- | ---------------------------------- |
+| Name        | Type     | Required | Description                        |
+| ----------- | -------- | -------- | ---------------------------------- |
 | identifiers | string[] | Yes      | Array of notification identifiers. |
 
 ---
@@ -425,8 +429,8 @@ Removes the specified delivered notifications from Notification Center
 
 **Parameters:**
 
-| Name        | Type  | Required | Description                        |
-| ----------- | ----- | -------- | ---------------------------------- |
+| Name        | Type     | Required | Description                        |
+| ----------- | -------- | -------- | ---------------------------------- |
 | identifiers | string[] | Yes      | Array of notification identifiers. |
 
 ---
