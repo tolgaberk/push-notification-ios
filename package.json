@@ -1,14 +1,15 @@
 {
-  "name": "@react-native-community/push-notification-ios",
-  "version": "1.8.0",
-  "description": "React Native Push Notification API for iOS",
+  "name": "@tolgaberk/push-notification-ios",
+  "version": "1.8.1",
+  "description": "React Native Push Notification API for iOS with firebase",
   "main": "js/index.js",
   "types": "index.d.ts",
   "author": "Rafael Lincoln <rafaellincolnpereira@gmail.com>",
   "contributors": [
-    "Jesse Katsumata <jesse.katsumata@gmail.com>"
+    "Jesse Katsumata <jesse.katsumata@gmail.com>",
+    "Tolga Berk Ordanuç <tolga@ordanuc.com>"
   ],
-  "homepage": "https://github.com/react-native-community/push-notification-ios#readme",
+  "homepage": "https://github.com/tolgaberk/push-notification-ios#readme",
   "license": "MIT",
   "files": [
     "android",
@@ -33,7 +34,8 @@
     "push notification ios",
     "push notification",
     "notification ios",
-    "notification"
+    "notification",
+    "firebase"
   ],
   "peerDependencies": {
     "react": ">=16.6.3",
@@ -58,6 +60,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/react-native-community/push-notification-ios.git"
+    "url": "https://github.com/tolgaberk/push-notification-ios.git"
   }
 }

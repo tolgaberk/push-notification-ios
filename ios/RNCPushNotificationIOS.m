@@ -80,8 +80,18 @@ RCT_EXPORT_MODULE()
 {
 }
 
-+ (void)didRegisterForRemoteNotificationsWithDeviceToken
++ (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
+  // NSMutableString *hexString = [NSMutableString string];
+  // NSUInteger deviceTokenLength = deviceToken.length;
+  // const unsigned char *bytes = deviceToken.bytes;
+  // for (NSUInteger i = 0; i < deviceTokenLength; i++) {
+  //   [hexString appendFormat:@"%02x", bytes[i]];
+  // }
+  // [[NSNotificationCenter defaultCenter] postNotificationName:kRemoteNotificationsRegistered
+  //                                                     object:self
+  //                                                   userInfo:@{@"deviceToken" : [hexString copy]}];
+
   NSString* fcmToken = [FIRMessaging messaging].FCMToken;
   [[NSNotificationCenter defaultCenter] postNotificationName:kRemoteNotificationsRegistered
                                                       object:self
